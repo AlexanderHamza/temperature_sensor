@@ -2,12 +2,14 @@
 
 set -e
 
+cd "script/"
+
 echo "=> Installing environment temperature logger...\n"
-sudo cp script/env-temp.py /usr/local/bin/
+sudo cp env-temp.py /usr/local/bin/
 sudo chmod +x /usr/local/bin/env-temp.py
 
 echo "=> Starting environment temperature logger...\n"
-sudo cp script/env-temp.sh /etc/init.d/
+sudo cp env-temp.sh /etc/init.d/
 sudo chmod +x /etc/init.d/env-temp.sh
 
 sudo update-rc.d env-temp.sh defaults
