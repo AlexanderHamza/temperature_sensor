@@ -1,0 +1,18 @@
+#! /bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "=> Installing environment temperature logger...\n"
+sudo cp env-temp.py /usr/local/bin/
+sudo chmod +x /usr/local/bin/env-temp.py
+
+echo "=> Starting shutdown environment temperature logger...\n"
+sudo cp env-temp.sh /etc/init.d/
+sudo chmod +x /etc/init.d/env-temp.sh
+
+sudo update-rc.d env-temp.sh defaults
+sudo /etc/init.d/env-temp.sh start
+
+echo "Environment temperature logger installed."
